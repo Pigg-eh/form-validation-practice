@@ -1,4 +1,7 @@
-.hello {
-  color: red;
-  font-family: "MyFont";
+:valid {
+  border: greenyellow;
+}
+
+:invalid {
+  border: red;
 }

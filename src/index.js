@@ -1,19 +1,18 @@
 import "./style.css";
 
-function component() {
-  const element = document.createElement("div");
+//object
+// object{name, length, }
 
-  function testLog() {
-    const foo = prompt("type");
-    console.log("test");
-
-    return (element.innerHTML = `foo ${foo}`);
+function validateInput() {
+  let value = document.forms["fooForm"]["email"].value;
+  if (value != "") {
+    alert("Name must be filled out");
+    return false;
   }
-
-  testLog();
-  element.classList.add("hello");
-
-  return element;
 }
+////length
+////pattern recognition
+////slap on required
+////passwords need to equal each other
 
-document.body.appendChild(component());
+//onsubmit message

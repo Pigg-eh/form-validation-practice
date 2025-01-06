@@ -5,5 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <form name="fooForm" action="" method="get" novalidate>
+      <br /><label for="Email">Email:</label> <br />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="example@google.com"
+        minlength="5"
+        maxlength="30"
+        required
+      />
+      <br /><label for="country">Country:</label> <br />
+      <input
+        type="text"
+        name="country"
+        id="country"
+        placeholder="The Philippines"
+        minlength="4"
+        maxlength="20"
+        required
+      />
+
+      <br /><label for="zipcode">Zip Code:</label> <br />
+      <input
+        type="text"
+        name="zipcode"
+        id="zipcode"
+        placeholder="6000"
+        pattern="[0-9]+"
+        minlength="4"
+        maxlength="6"
+        required
+      />
+
+      <br /><label for="password">Password:</label> <br />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        minlength="7"
+        maxlength="20"
+        pattern="[A-Za-z0-9!@#$%^&*()]+"
+        required
+      />
+
+      <br /><label for="passwordconfirm">Confirm Password:</label> <br />
+      <input
+        type="password"
+        name="passwordconfirm"
+        id="passwordconfirm"
+        minlength="7"
+        maxlength="20"
+        pattern="[A-Za-z0-9!@#$%^&*()]+"
+        required
+      />
+      <br /><input class="userInput" type="submit" value="Submit" required />
+    </form>
+  </body>
 </html>
