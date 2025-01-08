@@ -1,15 +1,19 @@
 import "./style.css";
 
+let email = document.querySelector("input#email");
+
+email.addEventListener("focusout", () => {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("I am expecting an email address!");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+
+// console.log(`${e.target.checkValidity()} `);
+
 //object
 // object{name, length, }
-
-function validateInput() {
-  let value = document.forms["fooForm"]["email"].value;
-  if (value != "") {
-    alert("Name must be filled out");
-    return false;
-  }
-}
 ////length
 ////pattern recognition
 ////slap on required

@@ -1,7 +1,15 @@
 :valid {
-  border: greenyellow;
+  border-color: greenyellow;
 }
 
 :invalid {
-  border: red;
+  border-color: red;
+}
+
+input {
+  border-color: black;
+}
+
+input:focus {
+  border-color: blue;
 }
