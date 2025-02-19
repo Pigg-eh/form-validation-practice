@@ -1,6 +1,6 @@
 import "./style.css";
-console.log("test");
 
+//logic to make the messages (needs to be made modular)
 const email = document.getElementById("email");
 const country = document.getElementById("country");
 const zipcode = document.getElementById("zipcode");
@@ -10,19 +10,8 @@ const passwordconfirm = document.getElementById("passwordconfirm");
 const form = document.getElementById("form");
 const errorElement = document.getElementById("error");
 
-form.addEventListener("submit", (e) => {
-  let messages = [];
-  if (email.value === "" || email.value == null) {
-    messages.push("Email is required");
-  }
-
-  if (messages.length > 0) {
-    e.preventDefault();
-    errorElement.innerText = messages.join(", ");
-  }
-});
-
-email.addEventListener("focusout", () => {
+//logic to add message
+email.addEventListener("input", (e) => {
   if (email.validity.typeMismatch) {
     email.setCustomValidity("I am expecting an email address!");
   } else {
@@ -32,11 +21,13 @@ email.addEventListener("focusout", () => {
 
 // console.log(`${e.target.checkValidity()} `);
 
+// --> make error message appear on focusout
+
 //object
 // object{name, length, }
 ////length
 ////pattern recognition
-////slap on required
+////required
 ////passwords need to equal each other
 
 //onsubmit message
