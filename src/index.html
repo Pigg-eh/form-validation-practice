@@ -10,7 +10,7 @@
 
     <!-- do this bit but in JS but with regex-->
     <form name="form" id="form" action="/" method="get" novalidate>
-      <br /><label for="Email">Email:</label> <br />
+      <label for="Email">Email:</label> <br />
       <input
         type="email"
         name="email"
@@ -20,7 +20,6 @@
         maxlength="30"
         required
       />
-      <br /><span id="emailMsg"></span>
 
       <br /><label for="country">Country:</label> <br />
       <input
@@ -32,7 +31,6 @@
         maxlength="20"
         required
       />
-      <br /><span id="countryMsg"></span>
 
       <br /><label for="zipcode">Zip Code:</label> <br />
       <input
@@ -45,7 +43,6 @@
         maxlength="6"
         required
       />
-      <br /><span id="zipcodeMsg"></span>
 
       <br /><label for="password">Password:</label> <br />
       <input
@@ -57,7 +54,6 @@
         pattern="[A-Za-z0-9!@#$%^&*()]+"
         required
       />
-      <br /><span id="passwordMsg"></span>
 
       <br /><label for="passwordconfirm">Confirm Password:</label> <br />
       <input
@@ -69,7 +65,6 @@
         pattern="[A-Za-z0-9!@#$%^&*()]+"
         required
       />
-      <br /><span id="confirmpwMsg"></span>
 
       <br /><input class="userInput" type="submit" value="Submit" required />
     </form>

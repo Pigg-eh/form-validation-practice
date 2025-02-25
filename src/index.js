@@ -1,27 +1,24 @@
 import "./style.css";
 
 //logic to make the messages (needs to be made modular)
+//use a function
+
 const email = document.getElementById("email");
-const country = document.getElementById("country");
-const zipcode = document.getElementById("zipcode");
-const password = document.getElementById("password");
-const passwordconfirm = document.getElementById("passwordconfirm");
+const validityState = email.validity;
 
-const form = document.getElementById("form");
-const errorElement = document.getElementById("error");
-
-//logic to add message
-email.addEventListener("input", (e) => {
-  if (email.validity.typeMismatch) {
+email.addEventListener("blur", (e) => {
+  if (validityState.valueMissing) {
     email.setCustomValidity("I am expecting an email address!");
+  } else if (validityState.typeMismatch) {
+    email.setCustomValidity("misak");
   } else {
     email.setCustomValidity("");
   }
+
+  email.reportValidity();
 });
 
 // console.log(`${e.target.checkValidity()} `);
-
-// --> make error message appear on focusout
 
 //object
 // object{name, length, }
