@@ -1,10 +1,8 @@
 import "./style.css";
 import Validator from "./validate";
-//logic to make the messages (needs to be made modular)
-//use a function // errMessage()
+import grabNames from "./grabElement";
 
-const input = document.getElementById("email");
-const validityState = input.validity;
+//e.target grabs element
 
 const email = new Validator(
   "Email",
@@ -23,18 +21,23 @@ const password = new Validator("password", 7, 25, "regex", true);
 const pwConfirm = new Validator("Email", 7, 25, "regex", true);
 
 //addeventlistener to all of the inputs
-input.addEventListener("blur", (e) => {
-  if (validityState.valueMissing) {
-    input.setCustomValidity("Please fill in the text field");
-  } else if (validityState.typeMismatch) {
-    input.setCustomValidity(`I am expecting an ${input.id} address`);
-  } else {
-    input.setCustomValidity("");
-  }
+const inputs = document.querySelectorAll("input");
 
-  input.reportValidity();
+inputs.forEach((input) => {
+  input.addEventListener("blur", (e) => {
+    let input = e.target;
+    let validityState = input.validity;
+    if (validityState.valueMissing) {
+      input.setCustomValidity("Please fill in the text field");
+    } else if (validityState.typeMismatch) {
+      input.setCustomValidity(`I am expecting an ${input.id} address`);
+    } else {
+      input.setCustomValidity("");
+    }
+
+    input.reportValidity();
+  });
 });
-
 // console.log(`${e.target.checkValidity()} `);
 
 //object
