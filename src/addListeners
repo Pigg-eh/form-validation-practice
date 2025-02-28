@@ -1,0 +1,23 @@
+//Adds addeventlistener to all of the inputs
+function addInputListeners() {
+  const inputs = document.querySelectorAll("input");
+
+  inputs.forEach((input) => {
+    input.addEventListener("blur", (e) => {
+      console.log(input);
+      let target = e.target;
+      let validityState = target.validity;
+      if (validityState.valueMissing) {
+        target.setCustomValidity("Please fill in the texty text field");
+      } else if (validityState.typeMismatch) {
+        target.setCustomValidity(`I am expecting an ${target.id} address`);
+      } else {
+        target.setCustomValidity("");
+      }
+
+      target.reportValidity();
+    });
+  });
+}
+
+export default addInputListeners;

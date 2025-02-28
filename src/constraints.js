@@ -1,4 +1,4 @@
-class Validator {
+class Constraints {
   constructor(type, minLength, maxLength, pattern, required) {
     this.type = type;
     [this.minLength, this.maxLength] = [minLength, maxLength];
@@ -7,4 +7,4 @@ class Validator {
   }
 }
 
-export default Validator;
+export default Constraints;

@@ -1,10 +1,11 @@
 import "./style.css";
-import Validator from "./validate";
-import grabNames from "./grabElement";
-
+import Constraints from "./constraints";
+import addInputListeners from "./addListeners";
 //e.target grabs element
+//type, minLength, maxLength, pattern, required
+addInputListeners();
 
-const email = new Validator(
+const emailConstraints = new Constraints(
   "Email",
   5,
   30,
@@ -12,32 +13,14 @@ const email = new Validator(
   true,
 );
 
-const county = new Validator("Country", 4, 20, "regex", true);
+const countyConstraints = new Constraints("Country", 4, 20, "regex", true);
 
-const zipcode = new Validator("zip code", 4, 4, "[0-9]+", true);
+const zipcodeConstraints = new Constraints("zip code", 4, 4, "[0-9]+", true);
 
-const password = new Validator("password", 7, 25, "regex", true);
+const passwordConstraints = new Constraints("password", 7, 25, "regex", true);
 
-const pwConfirm = new Validator("Email", 7, 25, "regex", true);
+const pwConfirmConstraints = new Constraints("Email", 7, 25, "regex", true);
 
-//addeventlistener to all of the inputs
-const inputs = document.querySelectorAll("input");
-
-inputs.forEach((input) => {
-  input.addEventListener("blur", (e) => {
-    let input = e.target;
-    let validityState = input.validity;
-    if (validityState.valueMissing) {
-      input.setCustomValidity("Please fill in the text field");
-    } else if (validityState.typeMismatch) {
-      input.setCustomValidity(`I am expecting an ${input.id} address`);
-    } else {
-      input.setCustomValidity("");
-    }
-
-    input.reportValidity();
-  });
-});
 // console.log(`${e.target.checkValidity()} `);
 
 //object
