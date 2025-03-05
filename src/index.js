@@ -13,21 +13,38 @@ const emailConstraints = new Constraints(
   true,
 );
 
-const countyConstraints = new Constraints("Country", 4, 20, "regex", true);
+const countyConstraints = new Constraints(
+  "Country",
+  4,
+  20,
+  "[a-zA-Z]{2,}",
+  true,
+);
 
 const zipcodeConstraints = new Constraints("zip code", 4, 4, "[0-9]+", true);
 
-const passwordConstraints = new Constraints("password", 7, 25, "regex", true);
+const passwordConstraints = new Constraints(
+  "password",
+  7,
+  25,
+  "[a-zA-Z]{2,}",
+  true,
+);
 
-const pwConfirmConstraints = new Constraints("Email", 7, 25, "regex", true);
+const pwConfirmConstraints = new Constraints(
+  "Email",
+  7,
+  25,
+  "[a-zA-Z]{2,}",
+  true,
+);
+
+// run these through input.setCustomValidity()
 
 // console.log(`${e.target.checkValidity()} `);
 
-//object
-// object{name, length, }
-////length
-////pattern recognition
-////required
+// object{type, minLength, maxLength, pattern, required}
+// skip, rangeUnderflow, rangeOverflow, patternMismatch,valueMissing
 ////passwords need to equal each other
 
 //onsubmit message

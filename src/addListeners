@@ -11,6 +11,9 @@ function addInputListeners() {
         target.setCustomValidity("Please fill in the texty text field");
       } else if (validityState.typeMismatch) {
         target.setCustomValidity(`I am expecting an ${target.id} address`);
+        // } else if (){
+
+        // }
       } else {
         target.setCustomValidity("");
       }
