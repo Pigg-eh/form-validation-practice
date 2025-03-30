@@ -1,26 +1,64 @@
+import { constraintsBool } from "./constraints";
+import Constraints from "./constraints";
+
 //Adds addeventlistener to all of the inputs
 function addInputListeners() {
-  const inputs = document.querySelectorAll("input");
+  const inputs = document.querySelectorAll("input.user");
+  //create and define constraint objects
 
   inputs.forEach((input) => {
+    const fieldName = input.name;
+    console.log(`input: ${input}`);
+    console.log(fields[fieldName]);
     input.addEventListener("blur", (e) => {
-      console.log(input);
-      let target = e.target;
-      let validityState = target.validity;
-      if (validityState.valueMissing) {
-        target.setCustomValidity("Please fill in the texty text field");
-      } else if (validityState.typeMismatch) {
-        target.setCustomValidity(`I am expecting an ${target.id} address`);
-        // } else if (){
+      console.log(input.name);
+      constraintsBool(input, fields[fieldName]);
 
-        // }
-      } else {
-        target.setCustomValidity("");
-      }
-
-      target.reportValidity();
+      input.reportValidity();
     });
   });
 }
+
+const emailConstraints = new Constraints(
+  "Email",
+  5,
+  30,
+  "[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}",
+  true,
+);
+
+const countyConstraints = new Constraints(
+  "Country",
+  4,
+  20,
+  "[a-zA-Z]{2,}",
+  true,
+);
+
+const zipcodeConstraints = new Constraints("zipcode", 4, 4, "[0-9]+", true);
+
+const passwordConstraints = new Constraints(
+  "password",
+  7,
+  25,
+  "[a-zA-Z]{2,}",
+  true,
+);
+
+const passwordConfConstraints = new Constraints(
+  "password", //this one cant be destructured for some reason
+  7,
+  25,
+  "[a-zA-Z]{2,}",
+  true,
+);
+
+const fields = {
+  email: emailConstraints,
+  country: countyConstraints,
+  zipcode: zipcodeConstraints,
+  password: passwordConstraints,
+  passwordconfirm: passwordConfConstraints,
+};
 
 export default addInputListeners;
