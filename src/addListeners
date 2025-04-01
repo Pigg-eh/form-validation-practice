@@ -46,7 +46,7 @@ const passwordConstraints = new Constraints(
 );
 
 const passwordConfConstraints = new Constraints(
-  "password", //this one cant be destructured for some reason
+  "second password", //this one cant be destructured for some reason
   7,
   25,
   "[a-zA-Z]{2,}",
