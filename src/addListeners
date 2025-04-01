@@ -12,22 +12,22 @@ function addInputListeners() {
 
   inputs.forEach((input) => {
     const fieldName = input.name;
-    let foo = false;
+    let initialInput = false;
     console.log(submitChecker);
 
     input.addEventListener("blur", (e) => {
       constraintsBool(input, fields[fieldName]);
 
-      if (foo === true && input.reportValidity() === true) {
+      if (initialInput === true && input.checkValidity() === true) {
         submitChecker.pop();
-        submitChecker.push(input.reportValidity());
-      } else if (foo != true) {
-        submitChecker.push(input.reportValidity());
-        foo = true;
+        submitChecker.push(input.checkValidity());
+      } else if (initialInput != true) {
+        submitChecker.push(input.checkValidity());
+        initialInput = true;
       }
       console.log(submitChecker);
     });
-    input.reportValidity();
+    // input.reportValidity(); this was an issue here
   });
 }
 
@@ -42,7 +42,7 @@ function addSubmitListeners() {
     //create and define constraint objects
 
     inputs.forEach((input) => {
-      input.checkValidity();
+      input.reportValidity(); // i had  an issue where this was reporting and locking users out, i ended up moving it to the submit button to have it shoot out the error messages on submit.
     });
   });
 }
