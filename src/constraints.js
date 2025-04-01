@@ -20,7 +20,6 @@ function constraintsBool(inputData, constraints) {
     );
   }
   if (inputData.value.length > maxLength) {
-    console.log(inputData.value);
     inputData.setCustomValidity(
       `This ${type} is too long please input a shorter ${type}. Oink!`,
     );
@@ -34,11 +33,18 @@ function constraintsBool(inputData, constraints) {
     inputData.setCustomValidity(`A ${type} is absolutely needed. Oink!`);
   }
 
-  if (type === "second password") {
+  if (type === "second password" && password.value) {
     if (password.value != inputData.value) {
       inputData.setCustomValidity(`The passwords do not match. Oink`);
     }
   }
+
+  if (type === "password" && password.value) {
+    if (passwordconfirm.value != inputData.value) {
+      inputData.setCustomValidity(`The passwords do not match. Oink`);
+    }
+  }
 }
+
 export default Constraints;
 export { constraintsBool };

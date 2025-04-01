@@ -1,20 +1,48 @@
-import { constraintsBool } from "./constraints";
+import { confirmPassword, constraintsBool } from "./constraints";
 import Constraints from "./constraints";
 
 //Adds addeventlistener to all of the inputs
+let submitChecker = [];
+const inputs = document.querySelectorAll("input.user");
+
 function addInputListeners() {
-  const inputs = document.querySelectorAll("input.user");
+  const form = document.querySelector("#form");
+
   //create and define constraint objects
 
   inputs.forEach((input) => {
     const fieldName = input.name;
-    console.log(`input: ${input}`);
-    console.log(fields[fieldName]);
+    let foo = false;
+    console.log(submitChecker);
+
     input.addEventListener("blur", (e) => {
-      console.log(input.name);
       constraintsBool(input, fields[fieldName]);
 
-      input.reportValidity();
+      if (foo === true && input.reportValidity() === true) {
+        submitChecker.pop();
+        submitChecker.push(input.reportValidity());
+      } else if (foo != true) {
+        submitChecker.push(input.reportValidity());
+        foo = true;
+      }
+      console.log(submitChecker);
+    });
+    input.reportValidity();
+  });
+}
+
+function addSubmitListeners() {
+  const form = document.querySelector("#form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (submitChecker[(0, 1, 2, 3, 4)] === true) alert("nice");
+
+    const inputs = document.querySelectorAll("input.user");
+    //create and define constraint objects
+
+    inputs.forEach((input) => {
+      input.checkValidity();
     });
   });
 }
@@ -62,3 +90,4 @@ const fields = {
 };
 
 export default addInputListeners;
+export { addSubmitListeners };
