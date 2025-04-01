@@ -15,6 +15,7 @@ function constraintsBool(inputData, constraints) {
   inputData.setCustomValidity("");
 
   if (inputData.value.length < minLength) {
+    console.log(type);
     inputData.setCustomValidity(
       `This ${type} is too short, please input a longer ${type}. Oink!`,
     );
@@ -29,8 +30,14 @@ function constraintsBool(inputData, constraints) {
       `This ${type} is invalid, please input a ${type}. Oink!`,
     );
   }
-  if (required && !inputData.value) {
+  if (
+    required &&
+    !inputData.value &&
+    inputData.type != ("password" || "second password")
+  ) {
     inputData.setCustomValidity(`A ${type} is absolutely needed. Oink!`);
+  } else {
+    inputData.setCustomValidity("");
   }
 
   if (type === "second password" && password.value) {
@@ -39,7 +46,7 @@ function constraintsBool(inputData, constraints) {
     }
   }
 
-  if (type === "password" && password.value) {
+  if (type === "password" && passwordconfirm.value) {
     if (passwordconfirm.value != inputData.value) {
       inputData.setCustomValidity(`The passwords do not match. Oink`);
     }
